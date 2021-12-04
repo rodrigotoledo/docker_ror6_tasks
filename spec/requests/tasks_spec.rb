@@ -13,15 +13,18 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/tasks", type: :request do
-  
+
   # Task. As you add validations to Task, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    attributes_for(:task)
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      title: '',
+      description: ''
+    }
   }
 
   describe "GET /index" do
@@ -78,7 +81,7 @@ RSpec.describe "/tasks", type: :request do
 
       it "renders a successful response (i.e. to display the 'new' template)" do
         post tasks_url, params: { task: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to render_template(:new)
       end
     end
   end
@@ -86,15 +89,8 @@ RSpec.describe "/tasks", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        attributes_for(:task)
       }
-
-      it "updates the requested task" do
-        task = Task.create! valid_attributes
-        patch task_url(task), params: { task: new_attributes }
-        task.reload
-        skip("Add assertions for updated state")
-      end
 
       it "redirects to the task" do
         task = Task.create! valid_attributes
@@ -108,7 +104,7 @@ RSpec.describe "/tasks", type: :request do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         task = Task.create! valid_attributes
         patch task_url(task), params: { task: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to render_template(:edit)
       end
     end
   end
