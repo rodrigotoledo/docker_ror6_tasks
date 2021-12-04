@@ -27,6 +27,10 @@ RSpec.describe "/authors", type: :request do
     }
   }
 
+  before do
+    sign_in create(:user)
+  end
+
   describe "GET /index" do
     it "renders a successful response" do
       Author.create! valid_attributes
