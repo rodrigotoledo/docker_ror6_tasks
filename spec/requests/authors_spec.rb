@@ -13,15 +13,18 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/authors", type: :request do
-  
+
   # Author. As you add validations to Author, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    attributes_for(:author)
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      name: '',
+      email: ''
+    }
   }
 
   describe "GET /index" do
@@ -78,7 +81,7 @@ RSpec.describe "/authors", type: :request do
 
       it "renders a successful response (i.e. to display the 'new' template)" do
         post authors_url, params: { author: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to render_template(:new)
       end
     end
   end
@@ -86,15 +89,8 @@ RSpec.describe "/authors", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        attributes_for(:author)
       }
-
-      it "updates the requested author" do
-        author = Author.create! valid_attributes
-        patch author_url(author), params: { author: new_attributes }
-        author.reload
-        skip("Add assertions for updated state")
-      end
 
       it "redirects to the author" do
         author = Author.create! valid_attributes
@@ -108,7 +104,7 @@ RSpec.describe "/authors", type: :request do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         author = Author.create! valid_attributes
         patch author_url(author), params: { author: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to render_template(:edit)
       end
     end
   end
