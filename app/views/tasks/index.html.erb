@@ -18,7 +18,7 @@
         <td><%= task.author_id %></td>
         <td><%= task.title %></td>
         <td><%= truncate task.description %></td>
-        <td><%= l task.completed_at %></td>
+        <td><%= l(task.completed_at) if task.completed_at %></td>
         <td>
           <div class="btn-group" role="group" aria-label="Actions`">
             <%= link_to 'Show', task, class: 'btn btn-sm btn-primary' %>
