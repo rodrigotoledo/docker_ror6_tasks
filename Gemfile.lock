@@ -85,6 +85,8 @@ GEM
     crass (1.0.6)
     diff-lcs (1.4.4)
     erubi (1.10.0)
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
     ffi (1.15.4)
     formatador (0.3.0)
     globalid (1.0.0)
@@ -215,6 +217,8 @@ GEM
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     shellany (0.0.1)
+    shoulda-matchers (5.0.0)
+      activesupport (>= 5.2.0)
     spring (3.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -260,6 +264,7 @@ DEPENDENCIES
   bootstrap_form (~> 5.0)
   byebug
   capybara (>= 3.26)
+  faker
   guard-rspec
   jbuilder (~> 2.7)
   listen (~> 3.3)
@@ -269,6 +274,7 @@ DEPENDENCIES
   rspec-rails (~> 5.0.0)
   sass-rails (>= 6)
   selenium-webdriver
+  shoulda-matchers (~> 5.0)
   spring
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
