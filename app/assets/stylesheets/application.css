@@ -64,15 +64,17 @@
 .results {
   min-height: 100px;
   margin-bottom: 20px;
-  background-color: azure;
   border: 1px solid #ccc;
   scroll-behavior: auto;
   height: 124px;
   overflow: auto;
-  padding: 10px 30px;
+  padding: 10px 10px;
 }
 
 .fixed_results {
   float: left;
   height: 150px;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px;
 }

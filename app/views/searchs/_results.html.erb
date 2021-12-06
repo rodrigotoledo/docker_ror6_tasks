@@ -1,5 +1,25 @@
 <div class="results">
   <div class="fixed_results">
-  <%=results.inspect%>
+    <h4>Tasks finded: <%=tasks.count%></h4>
+    <% unless tasks.empty? %>
+      <table class="table-responsive table">
+        <thead class="thead-light">
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% tasks.each do |task| %>
+          <tr>
+            <td><%=link_to task.id, task %></td>
+            <td><%=link_to task.title, task %></td>
+            <td><%=link_to truncate(task.description), task %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
   </div>
 </div>

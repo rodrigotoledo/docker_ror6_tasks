@@ -37,9 +37,7 @@ class SearchReflex < ApplicationReflex
       morph "#search_result", ''
     else
 
-      morph "#search_result", render(partial: '/searchs/results', locals: {results: Author.all})
-      # morph "#search_result", render(partial: '/searchs/results', locals: {results: [1,2,3,4]})
+      morph "#search_result", render(partial: '/searchs/results', locals: {tasks: Task.where("title ILIKE :search or description ILIKE :search", {search: "%#{element.value}%"})})
     end
-    # morph "#search_result", element.value.upcase
   end
 end
